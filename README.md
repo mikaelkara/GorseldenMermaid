@@ -1,8 +1,8 @@
 # Görselden Mermaid
 
-Bu uygulama, kullanıcıdan alınan bir görseldeki metni OCR ile çıkarır,
-Türkçeye çevirir ve bir Mermaid diyagramı oluşturur. Streamlit arayüzü ile
-sonuçlar Türkçe olarak gösterilir.
+ Bu uygulama, kullanıcıdan alınan bir görseldeki metni OCR ile çıkarır,
+ Türkçeye çevirir ve bir Mermaid diyagramı oluşturur. Jupyter Notebook
+ üzerinden sonuçlar Türkçe olarak gösterilir.
 
 ## Kurulum
 
@@ -23,5 +23,5 @@ OpenAI API anahtarınızı `OPENAI_API_KEY` ortam değişkeni olarak ayarlayın.
 ## Çalıştırma
 
 ```bash
-streamlit run app.py
+jupyter notebook gorselden_mermaid.ipynb
 ```

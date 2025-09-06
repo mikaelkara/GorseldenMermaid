@@ -1,20 +1,32 @@
 # AGENTS.md
-## Proje Amacı
-Bu projede kullanıcıdan alınan bir görselin içeriği Türkçe olarak açıklanmalı ve açıklama bir Mermaid diyagramına dönüştürülmelidir. Çıktı Türkçe olmalıdır.
 
-## Ortam ve Kurulum
+## Proje Amacı
+
+Google Colab ortamında, kullanıcıdan alınan görsel, yapay zeka ile analiz edilecek; içerik dili ne olursa olsun, sosyal medya için Türkçe ve Mermaid diyagramına uygun bir çıktı üretilecek.
+
+## Ortam ve Gereksinimler
+
+- Google Colab (Çevrim içi çalışma)
 - Python 3.9+
 - langchain
-- openai (veya başka bir LLM servisi)
-- streamlit (web arayüzü için)
-- mermaid (diyagram dönüşümü ve gösterimi için)
+- openai veya Gemini/Gemma API'si
+- pillow (görsel işlemleri için)
+- tesseract veya uygun OCR kütüphanesi
 
-## Gerekli paketler: 
-pip install langchain openai streamlit
+Gerekli komutlar: !pip install langchain openai pillow pytesseract
 
-## Geliştirme Adımları
-1. Kullanıcıdan görsel alın.
-2. Görseli OCR (Optik Karakter Tanıma) ile metne çevir.
-3. Agent (LLM) ile metni yorumlayıp Türkçe bir diyagram açıklaması oluştur.
-4. Açıklamayı Mermaid diyagram koduna dönüştür.
-5. Diyagramı Türkçe olarak streamlit arayüzünde göster.
+## Agent Görev Akışı
+
+1. Colab arayüzünden görseli al.
+2. Görsel içeriğini OCR ile metne dönüştür.
+3. Metin dili Türkçe değilse, Türkçeye çevir.
+4. Metni ve görselin genel yapısını analiz ederek tipini belirle (akış, tablo, süreç diyagramı vb.).
+5. Sosyal medya uygun kısa, net, Türkçe açıklama hazırla.
+6. Açıklamayı Türkçe Mermaid diyagramına dönüştür.
+7. Diyagram kodunu ve Türkçe açıklamayı çıktı olarak göster.
+
+## Sosyal Medya Uyum Kuralları
+
+- Çıktı net, kısa ve anlaşılır olmalı.
+- Teknik jargon olabildiğince sadeleştirilmeli.
+- Türkçe başlık ve hashtag önerileri agent tarafından hazırlanmalı.

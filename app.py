@@ -1,4 +1,5 @@
 import json
+import re
 from typing import Dict
 
 import openai
@@ -39,7 +40,18 @@ def diagram_from_text(text: str) -> Dict[str, str]:
         messages=[{"role": "user", "content": prompt}],
     )
     content = response.choices[0].message["content"].strip()
-    return json.loads(content)
+
+    # Find the JSON object in the response string.
+    match = re.search(r"\{.*\}", content, re.DOTALL)
+    if match:
+        json_str = match.group(0)
+        try:
+            return json.loads(json_str)
+        except json.JSONDecodeError:
+            pass  # Fall through to return the default dict.
+
+    # Return a default dictionary if parsing fails.
+    return {"type": "", "description": "", "mermaid": ""}
 
 
 st.set_page_config(page_title="Görselden Mermaid")
